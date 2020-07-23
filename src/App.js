@@ -17,31 +17,33 @@ import './App.css';
 
 function App() {
   return(
-    <Router>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-          <Route exact path="/allchats">
-            <AllChat />
-          </Route>
-          <Route exact path="/forgot">
-            <Forgot />
-          </Route>
-          <Route exact path="/chat">
-            <Chat />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div className="App-container">
+      <Router>
+        <div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
+            </Route>
+            <Route exact path="/allchats">
+              <AllChat />
+            </Route>
+            <Route exact path="/forgot">
+              <Forgot />
+            </Route>
+            <Route exact path="/chat">
+              <Chat />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </div>
   );
 }
 

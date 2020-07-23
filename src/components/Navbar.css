@@ -1,0 +1,8 @@
+.Nav-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 2px solid black;
+}
