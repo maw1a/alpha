@@ -1,13 +1,8 @@
 .App-container {
   margin-top: 0;
   flex: 1;
-  background-color: blue;
 }
 
 .Top {
   margin-top: 20vh;
 }
-
-/* .Test {
-  height: 500vh;
-} */
