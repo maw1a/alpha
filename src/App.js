@@ -20,15 +20,17 @@ function App() {
     <div className="App-container">
       <Router>
         <div>
-          <Navbar />
           <Switch>
             <Route exact path="/">
+              <Navbar />
               <Home />
             </Route>
             <Route exact path="/login">
+              <Navbar />
               <Login />
             </Route>
             <Route exact path="/signup">
+              <Navbar />
               <SignUp />
             </Route>
             <Route exact path="/allchats">

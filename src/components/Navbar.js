@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Navbar.css'
 import {
   AppBar,
   Toolbar,
   InputBase,
-  Button,
-  Typography
+  Button
 } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -14,7 +12,7 @@ export default function Navbar() {
     return(
       <AppBar position="static">
         <Toolbar style={{
-          height: 60,
+          height: 65,
           backgroundColor: 'rgb(255, 0, 0)',
           justifyContent: 'space-between'
         }}>
