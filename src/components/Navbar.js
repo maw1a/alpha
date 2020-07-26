@@ -9,6 +9,7 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 
 export default function Navbar() {
+
     return(
       <AppBar position="static">
         <Toolbar style={{
