@@ -41,8 +41,7 @@ export default class SignUp extends React.Component {
                 <Paper elevation={2} style={{ padding: 20, width: 300, marginBottom: 60}}>
                     <h3>Enter your Phone Number</h3>
                     <div>
-                        {/* Not operator(!) for production test */}
-                        {this.state.otp ? <div style={{display: 'flex', flexDirection: 'row', marginLeft: 'auto', justifyContent: 'space-around'}}>
+                        {!this.state.otp ? <div style={{display: 'flex', flexDirection: 'row', marginLeft: 'auto', justifyContent: 'space-around'}}>
                             <div style={{alignItems: 'flex-end', justifyContent: 'center', display: 'flex', marginRight: 10}}>
                                 <TextField id="code" select color="secondary" value={this.state.code} onChange={e => {
                                     this.setState({code: e.target.value});
