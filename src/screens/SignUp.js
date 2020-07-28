@@ -58,6 +58,30 @@ export default class SignUp extends React.Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
+    _getCode = async() => {
+        const e = this.state.code.code+this.state.pno;
+        await axios.get("http://localhost:8000/verify/getcode", {
+            params: {
+                phonenumber: e,
+                channel: 'sms'
+            }
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    };
+
+    _verifyCode = async () => {
+        const e = this.state.code.code+this.state.pno;
+        await axios.get("http://localhost:8000/verify/verifycode", {
+            params: {
+                phonenumber: e,
+                code: this.state.otp
+            }
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    }
+
     render(){
         const height = this.state.height-65;
         return(
@@ -77,7 +101,7 @@ export default class SignUp extends React.Component {
                                     {codes.map(item => (
                                         <MenuItem key={item.name} value={item}>
                                             <img alt={item.name} src={"https://www.countryflags.io/"+ item.name.toLowerCase() +"/flat/64.png"} style={{alignSelf: 'flex-end', marginRight: 5, height: 20, width: 32, objectFit: 'cover'}}/>
-                                            {item.code}
+                                            +{item.code}
                                         </MenuItem>
                                     ))}
                                 </TextField>
@@ -85,14 +109,19 @@ export default class SignUp extends React.Component {
                             <div>
                                 <TextField id="phone" label="Phone" color="secondary" value={this.state.pno} 
                                 onChange={e => {
-                                    this.setState({pno: e.target.value});
+                                    if((e.target.value[e.target.value.length-1]>='0' && e.target.value[e.target.value.length-1]<='9') || !e.target.value) {
+                                        this.setState({pno: e.target.value});
+                                    }
                                 }}/>
                             </div>
                         </div> : <Otp otp={this.state.otp} setOtp={val => this.setState({otp: val})} />}
+                        {this.state.otpShow ? <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: 5}}>
+                            Didn't receive an OTP? <Button onClick={() => this._getCode()} color="primary" style={{textTransform: 'none', fontSize: 15}}>Resend OTP</Button>
+                        </div> : null }
                         <div style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
                             <Button 
                                 variant="contained" 
-                                disabled={(this.state.pno.length!==10) || (this.state.code===null) || !isNumeric(this.state.pno)} 
+                                disabled={(this.state.pno.length!==10) || (this.state.code===null) || !isNumeric(this.state.pno) || (this.state.otpShow && this.state.otp.length!==6)} 
                                 color="secondary" 
                                 style={{ 
                                     color: 'white', 
@@ -100,7 +129,12 @@ export default class SignUp extends React.Component {
                                     textTransform: 'none'
                                 }}
                                 onClick={() => {
-                                    this.setState({otpShow: true});
+                                    if(this.state.otpShow) {
+                                        this._verifyCode();
+                                    } else {
+                                        this.setState({otpShow: true});
+                                        this._getCode();
+                                    }
                                 }}>
                                 Verify
                             </Button>
