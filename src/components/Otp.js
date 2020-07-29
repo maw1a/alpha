@@ -1,4 +1,4 @@
-import React, {useState, createRef} from 'react';
+import React, {createRef} from 'react';
 
 export default function Otp({otp, setOtp}) {
     

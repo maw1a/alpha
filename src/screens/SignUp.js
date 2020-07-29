@@ -12,6 +12,8 @@ import axios from 'axios';
 import Otp from '../components/Otp';
 import codes from '../data/phonecodes.json';
 
+import a1 from '../assets/a1.png';
+
 function isNumeric(n) {
     return !isNaN(parseInt(n)) && isFinite(n);
 }
@@ -85,7 +87,18 @@ export default class SignUp extends React.Component {
     render(){
         const height = this.state.height-65;
         return(
-            <div style={{flex: 1, height: height, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(160, 160, 160, 0.2)'}}>   
+            <div style={{
+                flex: 1, 
+                height: height, 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                backgroundColor: 'rgba(160, 160, 160, 0.2)', 
+                backgroundImage: `url(${a1})`,
+                backgroundPosition: 'left',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+            }}>
                 <Paper elevation={4} style={{ padding: 20, width: 300, marginBottom: 60}}>
                     {!this.state.otpShow ? <h3 style={{marginLeft: 10, color: '#9f9f9f'}}>αlpha</h3> : <IconButton onClick={() => {
                         this.setState({otpShow: false, otp: ''});
