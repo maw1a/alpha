@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import{
 Paper,
 TextField,
@@ -6,30 +6,40 @@ Button
 }from '@material-ui/core';
 
 export default function Login() {
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+
+    useEffect(() => {
+        updateWindowDimensions();
+        window.addEventListener('resize', updateWindowDimensions);
+    }, []);
+
+    function updateWindowDimensions() {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+    }
+
     return(
         <div style={{
-            height: '100vh',
-            flex: 1,  
-            display: 'flex', 
+            height: height-65,             
+            display: 'flex',
+            flex: 1, 
             alignItems: 'center', 
             justifyContent: 'center', 
             backgroundColor: 'rgba(160, 160, 160, 0.2)', 
-            // backgroundImage: `url(${a1})`,
-            backgroundPosition: 'left',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
+            paddingBottom: 10
         }}>
-        <Paper elevation={4}style={{ padding: 20, width: 300, marginBottom: 60}}>
-        <h3 style={{marginLeft: 10, color: '#9f9f9f'}}>αlpha</h3>
-        <TextField id="standard-basic" label="Phone No." style = {{width:'100%'}}/>
-        <TextField id="standard-basic" label="Password" style={{marginTop: 15,width:'100%'}} /> 
-        <div style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
-         <a href="/SignUp" style={{fontSize: 16, textDecoration: 'none',marginTop:10}}>Don't Have a account? Sign Up! </a>   
-        <Button variant="contained" color="secondary" style = {{color: 'white', marginLeft: 'auto',textTransform: 'none',marginTop:10}}>
-                    Login
-        </Button>
-            </div>
-        </Paper>
+            <Paper elevation={4}style={{ padding: 20, width: 300}}>
+                <h3 style={{marginLeft: 10, color: '#9f9f9f'}}>αlpha</h3>
+                <TextField id="standard-basic" label="Phone Number" color='secondary' style = {{width:'100%'}}/>
+                <TextField id="standard-basic" type='password' label="Password" color='secondary' style={{marginTop: 15,width:'100%'}} /> 
+                <div style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
+                    <a href="/signup" style={{fontSize: 14, textDecoration: 'none', marginTop: 15}}>Don't Have a account? Sign Up!</a>   
+                    <Button variant="contained" color="secondary" style = {{color: 'white', marginLeft: 'auto',textTransform: 'none',marginTop:10}}>
+                        Login
+                    </Button>
+                </div>
+            </Paper>
         </div>
     );
 }

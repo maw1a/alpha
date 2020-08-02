@@ -47,7 +47,7 @@ export default class SignUp extends React.Component {
         window.addEventListener('resize', this.updateWindowDimensions.bind(this));
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getPosition);
-        }          
+        }
     }
     
     componentWillUnmount() {
@@ -76,7 +76,7 @@ export default class SignUp extends React.Component {
             params: {
                 phonenumber: e,
                 code: this.state.otp
-            }
+            }   
         })
         .then(data => console.log(data))
         .catch(err => console.log(err));
