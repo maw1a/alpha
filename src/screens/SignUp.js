@@ -12,8 +12,6 @@ import axios from 'axios';
 import Otp from '../components/Otp';
 import codes from '../data/phonecodes.json';
 
-import a1 from '../assets/a1.png';
-
 function isNumeric(n) {
     return !isNaN(parseInt(n)) && isFinite(n);
 }
@@ -93,11 +91,7 @@ export default class SignUp extends React.Component {
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
-                backgroundColor: 'rgba(160, 160, 160, 0.2)', 
-                backgroundImage: `url(${a1})`,
-                backgroundPosition: 'left',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
+                backgroundColor: 'rgba(160, 160, 160, 0.2)'
             }}>
                 <Paper elevation={4} style={{ padding: 20, width: 300, marginBottom: 60}}>
                     {!this.state.otpShow ? <h3 style={{marginLeft: 10, color: '#9f9f9f'}}>αlpha</h3> : <IconButton onClick={() => {
@@ -113,7 +107,7 @@ export default class SignUp extends React.Component {
                                 }}>
                                     {codes.map(item => (
                                         <MenuItem key={item.name} value={item}>
-                                            <img alt={item.name} src={"https://www.countryflags.io/"+ item.name.toLowerCase() +"/flat/64.png"} style={{alignSelf: 'flex-end', marginRight: 5, height: 20, width: 32, objectFit: 'cover'}}/>
+                                            <img alt={item.name} src={"https://www.countryflags.io/"+ item.name.toLowerCase() +"/flat/64.png"} style={{alignSelf: 'flex-end', marginRight: 5, height: 18, width: 32, objectFit: 'cover'}}/>
                                             +{item.code}
                                         </MenuItem>
                                     ))}

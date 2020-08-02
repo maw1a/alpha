@@ -21,7 +21,7 @@ export default function Navbar() {
             fontSize: 24,
             textDecorationLine: 'none',
             color: 'white'
-          }}>αlpha</a>
+          }}><h4>αlpha</h4></a>
           <div style={{
             display: 'flex',
             flexDirection: 'row',
