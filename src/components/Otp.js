@@ -1,6 +1,6 @@
 import React, {createRef} from 'react';
 
-export default function Otp({otp, setOtp}) {
+export default function Otp({helper, otp, setOtp}) {
     
     const ref0 = createRef();
     const ref1 = createRef();
@@ -15,6 +15,7 @@ export default function Otp({otp, setOtp}) {
 
     return(
         <div style={{backgroundColor: 'white', display: 'flex', flexDirection: 'row', borderRadius: 5, justifyContent: 'center'}}>
+            <p>{helper}</p>
             <input 
             placeholder="•"
             ref={ref0}

@@ -34,7 +34,7 @@ export default function Login() {
                 <TextField id="standard-basic" label="Phone Number" color='secondary' style = {{width:'100%'}}/>
                 <TextField id="standard-basic" type='password' label="Password" color='secondary' style={{marginTop: 15,width:'100%'}} /> 
                 <div style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
-                    <a href="/signup" style={{fontSize: 14, textDecoration: 'none', marginTop: 15}}>Don't Have a account? Sign Up!</a>   
+                    <p style={{ fontSize: 14 }}>Don't have an account? <a href="/signup" style={{textDecoration: 'none', color: 'rgb(0,0,255)'}}>Sign up</a></p>
                     <Button variant="contained" color="secondary" style = {{color: 'white', marginLeft: 'auto',textTransform: 'none',marginTop:10}}>
                         Login
                     </Button>
