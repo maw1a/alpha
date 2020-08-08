@@ -10,6 +10,8 @@ import {
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import PhoneOutlinedIcon from '@material-ui/icons/PhoneOutlined';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 import Otp from '../components/Otp';
@@ -34,7 +36,8 @@ export default class SignUp extends React.Component {
             profile: false,
             dp: null,
             dpurl: null,
-            name: ''
+            name: '',
+            password: ''
         };
     }
 
@@ -107,6 +110,21 @@ export default class SignUp extends React.Component {
         .finally(() => this.setState({loading: false}));
     }
 
+    _registerAccount = async() => {
+        this.setState({loading: true});
+        axios.post("http://localhost:8000/user/signup", {
+            name: this.state.name,
+            phone: this.state.code.code+this.state.pno,
+            password: this.state.password
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+        .finally(() => {
+            this.setState({loading: false});
+            return(<Redirect to='/' />);
+        });
+    }
+
     render(){
         const height = this.state.height-65;
         return(
@@ -141,7 +159,7 @@ export default class SignUp extends React.Component {
                                     </TextField>
                                 </div>
                                 <div>
-                                    <TextField id="phone" label="Phone" color="secondary" helperText={this.state.err} value={this.state.pno} 
+                                    <TextField id="phone" label={<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', fontSize: 18}}><PhoneOutlinedIcon fontSize='small' style={{marginRight: 5}}/>Phone</div>} color="secondary" helperText={this.state.err} value={this.state.pno} 
                                     onChange={e => {
                                         if((e.target.value[e.target.value.length-1]>='0' && e.target.value[e.target.value.length-1]<='9') || !e.target.value) {
                                             this.setState({pno: e.target.value});
@@ -195,7 +213,22 @@ export default class SignUp extends React.Component {
                             </label>
                             <p style={{fontSize: 20, backgroundColor: 'rgba(100, 100, 100, 0.2)', padding: 5, paddingLeft: 10, paddingRight: 10, borderRadius: 5}}>+{this.state.code.code}-{this.state.pno}</p>
                             <TextField color="secondary" value={this.state.name} variant='outlined' style={{width: '94%', textAlign: 'center'}} label="Name" onChange={event => this.setState({name: event.target.value})}/>
-                            <Button variant='contained' color='secondary' style={{marginTop: 15, textTransform: 'none', fontSize: 18, paddingLeft: 15, paddingRight: 15}} endIcon={<ArrowForwardIcon/>}>Save</Button>
+                            <TextField color="secondary" value={this.state.password} variant='outlined' type="password" style={{width: '94%', textAlign: 'center', marginTop: 20}} label="Password" onChange={event => this.setState({password: event.target.value})}/>
+                            <Button 
+                            variant='contained' 
+                            color='secondary' 
+                            style={{
+                                marginTop: 15, 
+                                textTransform: 'none', 
+                                fontSize: 18, 
+                                paddingLeft: 15, 
+                                paddingRight: 15
+                            }} 
+                            endIcon={<ArrowForwardIcon/>}
+                            disabled={this.state.password.length<8 || this.state.name === ''}
+                            onClick={() => this._registerAccount()}>
+                                Save
+                            </Button>
                         </div>
                     </Paper>}
                 </div>
