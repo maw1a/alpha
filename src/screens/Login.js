@@ -21,13 +21,12 @@ export default function Login() {
 
     return(
         <div style={{
-            height: height-10,             
+            height: height,             
             display: 'flex',
             flex: 1, 
             alignItems: 'center', 
             justifyContent: 'center', 
             backgroundColor: 'rgba(160, 160, 160, 0.2)', 
-            paddingBottom: 10
         }}>
             <Paper elevation={4}style={{ padding: 20, width: 300}}>
                 <h3 style={{marginLeft: 10, color: '#9f9f9f'}}>αlpha</h3>

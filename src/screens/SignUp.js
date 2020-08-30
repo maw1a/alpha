@@ -126,7 +126,7 @@ export default class SignUp extends React.Component {
     }
 
     render(){
-        const height = this.state.height-10;
+        const height = this.state.height;
         return(
             <div style={{
                 flex: 1, 
