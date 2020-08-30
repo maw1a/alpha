@@ -11,7 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 export default function Navbar() {
 
     return(
-      <AppBar position="static">
+      <AppBar position="static" style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
         <Toolbar style={{
           height: 65,
           backgroundColor: 'rgb(255, 0, 0)',

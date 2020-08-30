@@ -21,7 +21,7 @@ export default function Login() {
 
     return(
         <div style={{
-            height: height-65,             
+            height: height-10,             
             display: 'flex',
             flex: 1, 
             alignItems: 'center', 
