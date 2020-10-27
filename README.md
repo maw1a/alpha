@@ -1,1 +1,1 @@
-Backend repository for the alpha chat
+Front-end web interface for alpha chat
