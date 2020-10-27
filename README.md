@@ -1,1 +1,1 @@
-MAWIA DA CODER.
+Backend repository for the alpha chat
